@@ -1,0 +1,12 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.second {
+  background-color: aqua;
+  padding: 2em;
+  margin-block-start: 14px;
+}
+.second button {
+  margin: 10px;
+}

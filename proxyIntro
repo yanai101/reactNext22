@@ -1,0 +1,35 @@
+const myObj = {};
+
+const proxyObj = new Proxy(myObj, {
+  get(target, prop) {
+    console.log("get", prop);
+    return target[prop] || `${prop} not found 🥹`;
+  },
+  set(target, prop, value) {
+    console.log("set", prop, value);
+    target[prop] = value;
+  },
+  defineProperty(target, prop, descriptor) {
+    console.log("defineProperty", prop, descriptor);
+    if (prop === "foo") {
+      return false;
+    }
+    return Reflect.defineProperty(target, prop, descriptor);
+  },
+  has(target, prop) {
+    console.log("has", prop);
+    if (target[prop] === "bar") {
+      return false;
+    } else {
+      return Reflect.has(target, prop);
+    }
+  },
+});
+
+proxyObj.foo = "bar";
+console.log(proxyObj.bar); // get name
+//console.log(Object.defineProperty(proxyObj, 'foo', {value: 42}));
+// console.log(proxyObj.foo); // get foo
+console.log("foo" in proxyObj); // has foo
+proxyObj.foo = "baz"; // set foo
+console.log("foo" in proxyObj); // has foo
