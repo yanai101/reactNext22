@@ -1,8 +1,6 @@
 import { useReducer } from "react";
 
 // state3
-
-
 function reducer(state, action) {
   switch (action.type) {
     case "change":
@@ -11,6 +9,7 @@ function reducer(state, action) {
       throw new Error();
   }
 }
+
 
 const useProxyState = (init) => {
   const [state, dispatch] = useReducer(reducer, init);
@@ -23,13 +22,16 @@ const useProxyState = (init) => {
       // return init value
       return target[key];
     },
+
+    //state 2
     set(target, key, value) {
-        let newStore = {...state};
-        newStore[key] = value;
-        dispatch({ type: "change", value: newStore });
-        target[key] = value;
-        return true;
-      }
+      let newStore = {...state};
+      newStore[key] = value;
+      dispatch({ type: "change", value: newStore });
+      target[key] = value;
+      return true;
+    }
+   
   });
 
   return proxyState;
@@ -37,6 +39,3 @@ const useProxyState = (init) => {
 };
 
 export default useProxyState;
-
-
-

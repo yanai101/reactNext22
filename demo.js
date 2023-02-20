@@ -13,4 +13,13 @@ const proxyObj = new Proxy(myObj, {
   // pro2
 });
 
-proxyObj.foo = "bar";
+// proxyObj.cambiumLocation = "Yerucham";
+// console.log(proxyObj.cambiumLocation);
+
+// Object.defineProperty(proxyObj, "newLocation", { value: "Dimona" });
+// Object.defineProperty(proxyObj, "updateLocation", { value: "Dimona" });
+// console.log(proxyObj.updateLocation);
+
+// proxyObj.foo = 'bar';
+// console.log(proxyObj.foo)
+// console.log('foo' in proxyObj)

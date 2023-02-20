@@ -1,5 +1,16 @@
 import "./App.css";
+import title from "./power.png";
 import useProxyState from "./useProxyState";
+
+
+// export default function App() {
+ 
+//   return (
+//     <div className="App">
+//       <img src={title}/>
+//     </div>
+//   );
+// }
 
 export default function App() {
  let myState = useProxyState({ parentCounter: 1, childCounter: 1 });
@@ -11,7 +22,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>Main component</h1>
+      <img src={title}/>
       <h2> The Proxy Magic!🪄</h2>
       {myState.parentCounter}
       <br />
